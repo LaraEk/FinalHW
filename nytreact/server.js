@@ -20,7 +20,6 @@ app.use(routes);
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/etymapsdb");
 
-
 app.listen(PORT, function() {
     console.log("connected on " + PORT);
 });
