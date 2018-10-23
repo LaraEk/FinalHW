@@ -3,12 +3,11 @@ const bodyParser = require ("body-parser");
 const mongoose = require("mongoose");
 const cheerio = require("cheerio");
 const request = require("request");
-// const axios = require("axios"); (I'll only include this if I end up using axios)
+const axios = require("axios");  // NOTE: (I'll only include this if I end up using axios)
 
 const routes = require("./Routes");
-// const db = require("./ModelsandControllers/models");
-
-// const Article = require ("./ModelController/models/Article");
+const db = require("./ModelsandControllers/models");
+const Article = require ("./ModelController/models/Article");
 
 const app = express();
 const PORT = process.env.PORT || 5656;
@@ -16,7 +15,7 @@ const PORT = process.env.PORT || 5656;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("client"));
-//app.use(routes);
+app.use(routes);
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/etymapsdb");
